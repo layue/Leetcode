@@ -1,5 +1,6 @@
 /**
  * Created by X on 12/02/2016.
+ Move zeros
  */
 public class Solution283 {
     public static void moveZeroes(int[] nums) {
