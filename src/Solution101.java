@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * Created by X on 28/02/2016.
@@ -76,13 +78,54 @@ public class Solution101 {
 
         return judgeSymmetric(root.left, root.right);
     }
+
+//---------------------iteratively-----------------------
+//    Hint:https://gist.github.com/AnotherStop/8979885
+    public static boolean isSymmetricIte(TreeNode root) {
+        if(root == null || (root.left == null && root.right == null))
+            return true;
+
+        Queue<TreeNode> lq = new LinkedList<TreeNode>();
+        Queue<TreeNode> rq = new LinkedList<TreeNode>();
+
+        lq.add(root.left);
+        rq.add(root.right);
+        TreeNode leftTemp = null;
+        TreeNode rightTemp = null;
+
+        while(lq.isEmpty() == false && rq.isEmpty() == false){
+            leftTemp = lq.poll();
+            rightTemp = rq.poll();
+
+            if(leftTemp == null && rightTemp == null)
+                continue;
+
+            if((leftTemp == null && rightTemp != null) || (leftTemp != null && rightTemp == null))
+                return false;
+
+            if(leftTemp.val != rightTemp.val)
+                return false;
+
+            //take care of the order when adding left and right child to left and right queue
+            lq.add(leftTemp.left);
+            lq.add(leftTemp.right);
+
+            rq.add(rightTemp.right);
+            rq.add(rightTemp.left);
+        }
+
+        //since the left and right always have same size, at here both of them are empty
+
+        return true;
+
+    }
     public static void main (String [] args) {
         TreeNode root = new TreeNode(1);
         TreeNode node1 = new TreeNode(2);
         TreeNode node2 = new TreeNode(2);
         TreeNode node3 = new TreeNode(3);
         TreeNode node4 = new TreeNode(4);
-        TreeNode node5 = new TreeNode(8);
+        TreeNode node5 = new TreeNode(4);
         TreeNode node6 = new TreeNode(3);
 
         root.left = node1;
@@ -94,8 +137,9 @@ public class Solution101 {
         node2.left = node5;
         node2.right = node6;
 
-        boolean symmmetric = isSymmetric(root);
-
+        boolean symmmetric = isSymmetricIte(root);
+//        boolean symmmetric = isSymmetric(root);
+        
         System.out.println(symmmetric);
     }
 }
