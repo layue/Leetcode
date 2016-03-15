@@ -7,13 +7,13 @@ import java.util.List;
 public class Solution77 {
     public static List<List<Integer>> combine(int n, int k) {
 
-        List<List<Integer>> l = new ArrayList<List<Integer>>();
+        List<List<Integer>> l = new ArrayList<>();
 
         if (n < k || n <= 0) {
             return l;
         }
 
-        recursive(n, k, 1, new ArrayList<Integer>(), l);
+        recursive(n, k, 1, new ArrayList<>(), l);
 
         return l;
 
@@ -21,7 +21,7 @@ public class Solution77 {
 
     public static void recursive(int n, int k, int from, List<Integer> item, List<List<Integer>> res) {
         if (item.size() == k) {
-            res.add(new ArrayList<Integer>(item));
+            res.add(new ArrayList<>(item));
             return;
         }
 

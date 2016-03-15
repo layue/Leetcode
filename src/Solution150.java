@@ -27,7 +27,6 @@ public class Solution150 {
                         break;
                     default:
                         break;
-
                 }
             } else {
                 operand.push(Integer.valueOf(token));

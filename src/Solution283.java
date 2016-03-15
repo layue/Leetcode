@@ -21,5 +21,6 @@ public class Solution283 {
     public static void main(String[] args) {
         int[] n = {1, 0, 2, 0, 3};
         moveZeroes(n);
+
     }
 }
