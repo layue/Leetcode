@@ -64,15 +64,16 @@ public class Solution148 {
         return result;
     }
 
-    public static void main(String[] args) {
+    public static void main(String [] args) {
         ListNode head = new ListNode(2);
-        ListNode node = new ListNode(1);
-        head.next = node;
-
-        ListNode newNode = new ListNode(5);
-        node.next = newNode;
-        node = node.next;
+        head.next = new ListNode(1);
+        head.next.next = new ListNode(5);
 
         head = sortList(head);
+
+        while (head != null) {
+            System.out.print(head.val + " ");
+            head = head.next;
+        }
     }
 }
