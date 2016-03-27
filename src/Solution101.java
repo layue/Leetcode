@@ -51,32 +51,21 @@ public class Solution101 {
 //        return true;
 //    }
 
-    public static class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x) { val = x; }
-    }
+
 //---------------------recursively----------------------
     public static boolean judgeSymmetric(TreeNode l, TreeNode r) {
-        if(l == null && r == null) {
+        if (l == null && r == null) {
             return true;
-        } else if(l == null || r == null) {
+        } else if (l == null || r == null) {
             return false;
         }
 
-        if(l.val != r.val) {
-            return false;
-        }
+        return l.val == r.val && judgeSymmetric(l.left, r.right) && judgeSymmetric(l.right, r.left);
 
-        return judgeSymmetric(l.left, r.right) && judgeSymmetric(l.right, r.left);
     }
     public static boolean isSymmetric(TreeNode root) {
-        if (root == null) {
-            return true;
-        }
+        return root == null || judgeSymmetric(root.left, root.right);
 
-        return judgeSymmetric(root.left, root.right);
     }
 
 //---------------------iteratively-----------------------
@@ -85,22 +74,22 @@ public class Solution101 {
         if(root == null || (root.left == null && root.right == null))
             return true;
 
-        Queue<TreeNode> lq = new LinkedList<TreeNode>();
-        Queue<TreeNode> rq = new LinkedList<TreeNode>();
+        Queue<TreeNode> lq = new LinkedList<>();
+        Queue<TreeNode> rq = new LinkedList<>();
 
         lq.add(root.left);
         rq.add(root.right);
-        TreeNode leftTemp = null;
-        TreeNode rightTemp = null;
+        TreeNode leftTemp;
+        TreeNode rightTemp;
 
-        while(lq.isEmpty() == false && rq.isEmpty() == false){
+        while(!lq.isEmpty() && !rq.isEmpty()){
             leftTemp = lq.poll();
             rightTemp = rq.poll();
 
             if(leftTemp == null && rightTemp == null)
                 continue;
 
-            if((leftTemp == null && rightTemp != null) || (leftTemp != null && rightTemp == null))
+            if(leftTemp == null || rightTemp == null)
                 return false;
 
             if(leftTemp.val != rightTemp.val)
