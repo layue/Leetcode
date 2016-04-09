@@ -1,4 +1,3 @@
-import java.time.temporal.Temporal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -13,13 +12,13 @@ import java.util.Stack;
  */
 public class Solution94 {
     public static List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> result = new ArrayList();
+        List<Integer> result = new ArrayList<>();
 
         if(root == null) {
             return result;
         }
 
-        Stack<TreeNode> s = new Stack();
+        Stack<TreeNode> s = new Stack<>();
         TreeNode node = root;
 
         while(!s.isEmpty() || node != null) {

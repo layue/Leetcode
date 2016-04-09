@@ -7,7 +7,7 @@
 
  */
 public class Solution28 {
-    public int strStr(String haystack, String needle) {
+    public static int strStr(String haystack, String needle) {
         if(haystack.length() < needle.length()) {
             return -1;
         }
@@ -21,5 +21,9 @@ public class Solution28 {
         }
 
         return -1;
+    }
+
+    public static void main(String[] args) {
+        System.out.print(strStr("123456","23"));
     }
 }
