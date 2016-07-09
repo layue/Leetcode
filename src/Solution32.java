@@ -32,6 +32,6 @@ public class Solution32 {
     }
 
     public static void main(String [] args) {
-        System.out.print(longestValidParentheses("((((((((("));
+        System.out.print(longestValidParentheses("((((((()(())"));
     }
 }
